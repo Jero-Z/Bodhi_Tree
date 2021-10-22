@@ -75,6 +75,7 @@ public class ArrayList<E> {
             elements[i - 1] = elements[i];
         }
         elements[--size] = null;
+        dynamicRecycle();
         return old;
     }
 
@@ -122,6 +123,11 @@ public class ArrayList<E> {
     }
 
 
+    /**
+     * 动态扩容
+     *
+     * @param capacity
+     */
     private void ensureCapacity(int capacity) {
         int oldCapacity = elements.length;
         if (oldCapacity >= capacity) return;// 容量足够
@@ -133,6 +139,27 @@ public class ArrayList<E> {
         }
         elements = newElements;
         System.out.println("new capacity equals:" + newCapacity);
+    }
+
+    /**
+     * 动态缩容
+     */
+    private void dynamicRecycle() {
+
+        int oldCapacity = elements.length;
+
+        int newCapacity = Math.max((oldCapacity >> 1), DEFAULT_CAPACITY);
+
+        if (size > (newCapacity) || oldCapacity <= DEFAULT_CAPACITY) return;
+
+        E[] newElements = (E[]) new Object[newCapacity];
+
+        for (int i = 0; i < size; i++) {
+            newElements[i] = elements[i];
+        }
+        elements = newElements;
+
+        System.out.println("缩容为：" + newCapacity);
     }
 
     /**

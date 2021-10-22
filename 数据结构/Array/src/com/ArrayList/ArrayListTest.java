@@ -43,16 +43,26 @@ public class ArrayListTest {
     @Test
     public void testArrayList() {
         ArrayList<Object> objectArrayList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 16; i++) {
             objectArrayList.add(i);
         }
+        System.out.println("现有数组内数据个数为：");
         System.out.println(objectArrayList.size());
-        Person person = new Person();
 
+        Person person = new Person();
         objectArrayList.add(person);
         Student student = new Student();
-
         objectArrayList.add(student);
+
+        System.out.println("添加完毕后size:" + objectArrayList.size());
+        int removeSize = objectArrayList.size();
+
+        for (int i = 0; i < removeSize; i++) {
+            objectArrayList.remove(objectArrayList.size() - 1);
+        }
+        System.out.println("--------");
+
+        System.out.println(objectArrayList.size());
         System.out.println(objectArrayList);
     }
 
