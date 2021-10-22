@@ -1,7 +1,6 @@
 package com.singleCircleLinkedList;
 
 import com.List;
-import com.singleLinkList.SingleLinkList;
 import org.junit.Test;
 
 public class SingleCircleLinkedListTest {
