@@ -1,13 +1,10 @@
-package com.linkedList;
+package com.circleLinkedList;
 
 import com.List;
-import com.singleCircleLinkedList.SingleCircleLinkedList;
-import com.singleCircleLinkedList.SingleCircleLinkedListTest;
+import com.linkedList.LinkedList;
 import org.junit.Test;
 
-public class LinkedListTest {
-
-
+public class CircleLinkedListTest {
     private static class Person {
         String name;
         int age;
@@ -39,26 +36,25 @@ public class LinkedListTest {
     }
 
     @Test
-    public void testLinkList() {
-        System.out.println("双向链表");
+    public void testCircleLinkedList() {
+        System.out.println("双向循环链表");
         System.out.println("----添加----");
-        List<Object> linkList = new LinkedList<>();
-        for (int i = 0; i < 5; i++) {
-            linkList.add(i);
+        CircleLinkedList<Object> linkedList = new CircleLinkedList<>();
+        for (int i = 0; i < 6; i++) {
+            linkedList.add(i);
         }
-        System.out.println(linkList);
+        System.out.println(linkedList);
         Person person = new Person("张三", 12);
         School school = new School("北京市", "实验小学");
-        linkList.add(person);
-        linkList.add(school);
-        System.out.println(linkList);
-        linkList.add(2, 33);
-        System.out.println(linkList);
+        linkedList.add(person);
+        linkedList.add(school);
+        System.out.println(linkedList);
+        linkedList.add(2, 33);
+        System.out.println(linkedList);
 
-        linkList.remove(0);
-        System.out.println(linkList);
-        linkList.remove(linkList.size()-1);
-        System.out.println(linkList);
-
+        linkedList.remove(0);
+        System.out.println(linkedList);
+        linkedList.remove(linkedList.size()-1);
+        System.out.println(linkedList);
     }
 }
