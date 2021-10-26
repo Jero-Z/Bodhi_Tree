@@ -142,6 +142,15 @@ public class ArrayList<E> {
     }
 
     /**
+     * 清除所有元素
+     */
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            elements[i] = null;
+        }
+        size = 0;
+    }
+    /**
      * 动态缩容
      */
     private void dynamicRecycle() {
