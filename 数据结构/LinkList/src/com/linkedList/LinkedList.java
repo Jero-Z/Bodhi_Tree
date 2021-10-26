@@ -116,8 +116,6 @@ public class LinkedList<E> extends AbstractList<E> {
     /**
      * 查找element在链表中的位置
      *
-     * @param element
-     * @return
      */
     @Override
     public int indexOf(E element) {
@@ -140,8 +138,6 @@ public class LinkedList<E> extends AbstractList<E> {
     /**
      * 获取指定位置的节点
      *
-     * @param index
-     * @return
      */
     private Node<E> node(int index) {
         rangeCheck(index);

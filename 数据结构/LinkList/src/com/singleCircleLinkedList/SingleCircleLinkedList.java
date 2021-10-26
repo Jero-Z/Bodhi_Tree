@@ -17,9 +17,7 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
 
         @Override
         public String toString() {
-            StringBuilder sb = new StringBuilder();
-            sb.append(element).append("_").append(next.element);
-            return sb.toString();
+            return element + "_" + next.element;
         }
     }
 
@@ -65,8 +63,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
     /**
      * 移除指定位置的元素
      *
-     * @param index
-     * @return
      */
     @Override
     public E remove(int index) {
@@ -112,8 +108,6 @@ public class SingleCircleLinkedList<E> extends AbstractList<E> {
     /**
      * 获取指定位置的节点
      *
-     * @param index
-     * @return
      */
     private Node<E> node(int index) {
         rangeCheck(index);

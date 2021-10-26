@@ -20,7 +20,8 @@ public class DequeTest {
         System.out.println(deque.peekFirst());
         System.out.println(deque.peekLast());
 
-        deque.removeFirst();
+        Object first = deque.removeFirst();
+        System.out.println(first);
         deque.removeFirst();
         deque.removeFirst();
         deque.removeFirst();

@@ -14,11 +14,13 @@ public class CircleDequeTest {
         System.out.println(circleDeque);
 
 
+        Object queueRear = circleDeque.deQueueRear();
+        System.out.println(queueRear);
         circleDeque.deQueueRear();
         circleDeque.deQueueRear();
         circleDeque.deQueueRear();
-        circleDeque.deQueueRear();
-        circleDeque.deQueueFront();
+        Object o = circleDeque.deQueueFront();
+        System.out.println(o);
         circleDeque.deQueueFront();
         circleDeque.deQueueFront();
         circleDeque.deQueueFront();

@@ -1,16 +1,14 @@
 package com.linkedList;
 
 import com.List;
-import com.singleCircleLinkedList.SingleCircleLinkedList;
-import com.singleCircleLinkedList.SingleCircleLinkedListTest;
 import org.junit.Test;
 
 public class LinkedListTest {
 
 
     private static class Person {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         public Person(String name, int age) {
             this.name = name;
@@ -24,8 +22,8 @@ public class LinkedListTest {
     }
 
     private static class School {
-        String address;
-        String name;
+        final String address;
+        final String name;
 
         public School(String address, String name) {
             this.address = address;
@@ -55,9 +53,10 @@ public class LinkedListTest {
         linkList.add(2, 33);
         System.out.println(linkList);
 
-        linkList.remove(0);
+        Object remove = linkList.remove(0);
+        System.out.println(remove);
         System.out.println(linkList);
-        linkList.remove(linkList.size()-1);
+        linkList.remove(linkList.size() - 1);
         System.out.println(linkList);
 
     }

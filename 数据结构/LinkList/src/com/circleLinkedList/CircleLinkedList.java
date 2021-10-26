@@ -66,7 +66,6 @@ public class CircleLinkedList<E> extends AbstractList<E> {
     /**
      * 获取当前链表中的下一个节点数据
      *
-     * @return
      */
     public E next() {
         if (current == null) return null;
@@ -87,8 +86,6 @@ public class CircleLinkedList<E> extends AbstractList<E> {
     /**
      * 添加节点
      *
-     * @param index
-     * @param element
      */
     @Override
     public void add(int index, E element) {
@@ -119,12 +116,12 @@ public class CircleLinkedList<E> extends AbstractList<E> {
 
     @Override
     public E remove(int index) {
-        /**
-         * 删除双向链表节点数据
-         *
-         * 两种情况：
-         * 删除的是最后一个 size == 1
-         * 删除的其他的
+        /*
+          删除双向链表节点数据
+
+          两种情况：
+          删除的是最后一个 size == 1
+          删除的其他的
          */
         rangeCheck(index);
         Node<E> node = node(index);
@@ -162,8 +159,6 @@ public class CircleLinkedList<E> extends AbstractList<E> {
      * <p>
      * 通过头尾部指针折中获取
      *
-     * @param index
-     * @return
      */
     private Node<E> node(int index) {
         rangeCheck(index);

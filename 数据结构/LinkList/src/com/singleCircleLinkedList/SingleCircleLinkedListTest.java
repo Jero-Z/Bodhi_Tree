@@ -5,14 +5,7 @@ import org.junit.Test;
 
 public class SingleCircleLinkedListTest {
 
-    private static class Person {
-        String name;
-        int age;
-
-        public Person(String name, int age) {
-            this.name = name;
-            this.age = age;
-        }
+    private record Person(String name, int age) {
 
         @Override
         public String toString() {
@@ -23,14 +16,7 @@ public class SingleCircleLinkedListTest {
         }
     }
 
-    private static class School {
-        String address;
-        String name;
-
-        public School(String address, String name) {
-            this.address = address;
-            this.name = name;
-        }
+    private record School(String address, String name) {
 
         @Override
         public String toString() {

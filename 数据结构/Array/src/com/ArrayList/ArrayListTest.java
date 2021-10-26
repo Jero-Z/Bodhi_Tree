@@ -3,9 +3,29 @@ package com.ArrayList;
 import org.junit.Test;
 
 public class ArrayListTest {
+
+
+    @Test
+    public void contains() {
+        ArrayList<Object> objectArrayList = new ArrayList<>();
+        System.out.println(objectArrayList.contains(11));
+    }
+
+    @Test
+    public void set() {
+        ArrayList<Object> objectArrayList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+
+            objectArrayList.add(i);
+        }
+        System.out.println(objectArrayList.set(1, "123"));
+        System.out.println(objectArrayList);
+    }
+
+
     private static class Person {
-        int age;
-        String name;
+        final int age;
+        final String name;
 
         public Person() {
             this.age = 28;
@@ -23,8 +43,8 @@ public class ArrayListTest {
 
     private static class Student {
 
-        String name;
-        String number;
+        final String name;
+        final String number;
 
         public Student() {
             this.name = "张三";

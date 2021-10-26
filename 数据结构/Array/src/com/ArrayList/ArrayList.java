@@ -1,8 +1,6 @@
 package com.ArrayList;
 
 
-import java.util.Arrays;
-
 @SuppressWarnings("unchecked")
 
 public class ArrayList<E> {
@@ -36,7 +34,6 @@ public class ArrayList<E> {
     /**
      * 查看元素是否在数组中
      *
-     * @param element
      * @return boolean
      */
     public boolean contains(E element) {
@@ -46,16 +43,12 @@ public class ArrayList<E> {
     /**
      * 在指定位置添加元素
      *
-     * @param index
-     * @param e
      * @return boolean
      */
     public boolean add(int index, E e) {
         rangeCheckForAdd(index);
         ensureCapacity(index + 1);//动态扩容
-        for (int i = size; i > index; i--) {
-            elements[i] = elements[i - 1];
-        }
+        if (size - index >= 0) System.arraycopy(elements, index, elements, index + 1, size - index);
 
         elements[index] = e;
         size++;
@@ -65,15 +58,11 @@ public class ArrayList<E> {
     /**
      * 删除指定位置的元素
      *
-     * @param index
-     * @return
      */
     public E remove(int index) {
         rangeCheck(index);
         E old = elements[index];
-        for (int i = index + 1; i < size; i++) {
-            elements[i - 1] = elements[i];
-        }
+        if (size - (index + 1) >= 0) System.arraycopy(elements, index + 1, elements, index + 1 - 1, size - (index + 1));
         elements[--size] = null;
         dynamicRecycle();
         return old;
@@ -82,9 +71,6 @@ public class ArrayList<E> {
     /**
      * 在index位置插入一个元素
      *
-     * @param index
-     * @param element
-     * @return
      */
     public E set(int index, E element) {
         rangeCheck(index);
@@ -96,7 +82,6 @@ public class ArrayList<E> {
     /**
      * 获取指定位置数据
      *
-     * @param index
      * @return E
      */
     public E get(int index) {
@@ -126,7 +111,6 @@ public class ArrayList<E> {
     /**
      * 动态扩容
      *
-     * @param capacity
      */
     private void ensureCapacity(int capacity) {
         int oldCapacity = elements.length;
@@ -134,9 +118,7 @@ public class ArrayList<E> {
 
         int newCapacity = oldCapacity + (oldCapacity >> 1);//扩容1.5倍
         E[] newElements = (E[]) new Object[newCapacity];
-        for (int i = 0; i < size; i++) {
-            newElements[i] = elements[i];
-        }
+        if (size >= 0) System.arraycopy(elements, 0, newElements, 0, size);
         elements = newElements;
         System.out.println("new capacity equals:" + newCapacity);
     }
@@ -163,9 +145,7 @@ public class ArrayList<E> {
 
         E[] newElements = (E[]) new Object[newCapacity];
 
-        for (int i = 0; i < size; i++) {
-            newElements[i] = elements[i];
-        }
+        if (size >= 0) System.arraycopy(elements, 0, newElements, 0, size);
         elements = newElements;
 
         System.out.println("缩容为：" + newCapacity);
@@ -174,7 +154,6 @@ public class ArrayList<E> {
     /**
      * 获取元素的位置
      *
-     * @param element
      * @return int
      */
     public int indexOf(E element) {

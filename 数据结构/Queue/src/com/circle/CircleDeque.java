@@ -30,7 +30,6 @@ public class CircleDeque<E> {
     /**
      * 从尾部入队
      *
-     * @param element
      */
     public void enQueueRear(E element) {
         ensureCapacity(size + 1);
@@ -42,7 +41,6 @@ public class CircleDeque<E> {
     /**
      * 从头部出队
      *
-     * @return
      */
     public E deQueueFront() {
         E frontElement = elements[front];
@@ -55,7 +53,6 @@ public class CircleDeque<E> {
     /**
      * 从头部入队
      *
-     * @param element
      */
     public void enQueueFront(E element) {
         ensureCapacity(size + 1);
@@ -68,7 +65,6 @@ public class CircleDeque<E> {
     /**
      * 从尾部出队
      *
-     * @return
      */
     public E deQueueRear() {
         int rearIndex = index(size - 1);
@@ -89,7 +85,7 @@ public class CircleDeque<E> {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("capcacity=").append(elements.length)
+        string.append("capacity=").append(elements.length)
                 .append(" size=").append(size)
                 .append(" front=").append(front)
                 .append(", [");
@@ -115,7 +111,6 @@ public class CircleDeque<E> {
     /**
      * 保证要有capacity的容量
      *
-     * @param capacity
      */
     private void ensureCapacity(int capacity) {
         int oldCapacity = elements.length;

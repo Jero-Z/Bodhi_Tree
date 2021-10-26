@@ -13,7 +13,8 @@ public class CircleQueueTest {
         }
 
         System.out.println(circleQueue);
-        circleQueue.deQueue();
+        Object queue = circleQueue.deQueue();
+        System.out.println(queue);
         circleQueue.deQueue();
         circleQueue.deQueue();
         circleQueue.deQueue();

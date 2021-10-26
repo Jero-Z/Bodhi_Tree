@@ -129,25 +129,23 @@ public class LinkedList<E> extends AbstractLinkList<E> {
 
     /**
      * 获取index位置对应的节点对象
-     * @param index
-     * @return
      */
     private Node<E> node(int index) {
         rangeCheck(index);
 
+        Node<E> node;
         if (index < (size >> 1)) {
-            Node<E> node = first;
+            node = first;
             for (int i = 0; i < index; i++) {
                 node = node.next;
             }
-            return node;
         } else {
-            Node<E> node = last;
+            node = last;
             for (int i = size - 1; i > index; i--) {
                 node = node.prev;
             }
-            return node;
         }
+        return node;
     }
 
     @Override

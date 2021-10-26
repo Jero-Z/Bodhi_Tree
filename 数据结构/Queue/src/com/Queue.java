@@ -18,7 +18,7 @@ public class Queue<E> {
      * peek
      * clear
      */
-    LinkedList<E> list = new LinkedList<>();
+    final LinkedList<E> list = new LinkedList<>();
 
     public void enqueue(E element) {
         list.add(element);

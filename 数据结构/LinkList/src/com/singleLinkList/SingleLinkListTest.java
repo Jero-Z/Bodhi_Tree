@@ -6,8 +6,8 @@ import org.junit.Test;
 public class SingleLinkListTest {
 
     private static class Person {
-        String name;
-        int age;
+        final String name;
+        final int age;
 
         public Person(String name, int age) {
             this.name = name;
@@ -24,8 +24,8 @@ public class SingleLinkListTest {
     }
 
     private static class School {
-        String address;
-        String name;
+        final String address;
+        final String name;
 
         public School(String address, String name) {
             this.address = address;

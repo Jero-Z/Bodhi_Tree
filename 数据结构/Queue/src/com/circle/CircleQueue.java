@@ -45,7 +45,6 @@ public class CircleQueue<E> {
     /**
      * 入队
      *
-     * @param element
      */
     public void enQueue(E element) {
         ensureCapacity(size + 1);
@@ -57,7 +56,6 @@ public class CircleQueue<E> {
     /**
      * 出队
      *
-     * @return
      */
     public E deQueue() {
         E frontElement = elements[front];
@@ -71,7 +69,6 @@ public class CircleQueue<E> {
     /**
      * 查看队首
      *
-     * @return
      */
     public E peek() {
         return elements[front];
@@ -80,7 +77,7 @@ public class CircleQueue<E> {
     @Override
     public String toString() {
         StringBuilder string = new StringBuilder();
-        string.append("capcacity=").append(elements.length)
+        string.append("capacity=").append(elements.length)
                 .append(" size=").append(size)
                 .append(" front=").append(front)
                 .append(", [");

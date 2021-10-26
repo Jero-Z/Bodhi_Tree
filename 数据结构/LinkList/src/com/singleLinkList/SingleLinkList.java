@@ -30,9 +30,6 @@ public class SingleLinkList<E> extends AbstractList<E> {
     /**
      * 设置指定位置的元素
      *
-     * @param index
-     * @param element
-     * @return
      */
     @Override
     public E set(int index, E element) {
@@ -50,8 +47,6 @@ public class SingleLinkList<E> extends AbstractList<E> {
     /**
      * 添加元素
      *
-     * @param index
-     * @param element
      */
     @Override
     public void add(int index, E element) {
@@ -70,8 +65,6 @@ public class SingleLinkList<E> extends AbstractList<E> {
     /**
      * 删除元素
      *
-     * @param index
-     * @return
      */
     @Override
     public E remove(int index) {
@@ -91,8 +84,6 @@ public class SingleLinkList<E> extends AbstractList<E> {
     /**
      * 查找元素所在位置
      *
-     * @param element
-     * @return
      */
     @Override
     public int indexOf(E element) {
@@ -115,8 +106,6 @@ public class SingleLinkList<E> extends AbstractList<E> {
     /**
      * 获取指定位置的节点
      *
-     * @param index
-     * @return
      */
     private Node<E> node(int index) {
         rangeCheck(index);
