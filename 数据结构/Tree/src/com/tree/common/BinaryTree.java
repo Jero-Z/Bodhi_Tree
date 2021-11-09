@@ -1,18 +1,14 @@
-package com.tree;
+package com.tree.common;
 
 import com.printer.BinaryTreeInfo;
 
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@SuppressWarnings("ALL")
-public class BinarySearchTree<E> implements BinaryTreeInfo {
+public class BinaryTree<E> implements BinaryTreeInfo {
+    protected int size;
 
-    int size;
-
-    Node<E> root;
-    private Comparator<E> comparator;
+    public Node<E> root;
 
     /**
      * 返回元素个数
@@ -35,135 +31,25 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         size = 0;
     }
 
-    /**
-     * 添加元素
-     *
-     * @param element
-     */
-    public void add(E element) {
-        elementNotNullCheck(element);
-        if (root == null) {
-            root = new Node<>(null, element);
-            size++;
-            return;
-        }
-
-        // 添加的不是第一个节点root时
-
-        Node<E> parent = root;
-        Node<E> node = this.root;
-
-        int cmp = 0;
-
-        do {
-            cmp = compare(element, node.element);
-            parent = node;// 保存其父节点
-
-            if (cmp > 0) {
-                node = node.right;
-            } else if (cmp < 0) {
-                node = node.left;
-            } else {
-                node.element = element;
-                return;
-            }
-        } while (node != null);
-
-        Node<E> newNode = new Node<>(parent, element);//找到最后的父节点后进行节点的构建
-
-        if (cmp > 0) {//判断节点应处于左还是右
-            parent.right = newNode;
-        } else {
-            parent.left = newNode;
-        }
-        size++;
-    }
-
-    /**
-     * 删除元素
-     *
-     * @param element
-     */
-    public void remove(E element) {
-
-        Node<E> node = node(element);
-        remove(node);
-
-    }
-
-    private void remove(Node<E> node) {
-        if (node == null) return;
-
-
-        if (node.hasTwoChilden()) {
-            // node是叶子节点
-            Node<E> s = getSuccessor(node);
-
-            node.element = s.element;
-            node = s;
-        }
-
-        Node<E> replacement = node.left != null ? node.left : node.right;
-        if (replacement != null) {
-            //要删除的节点度为1
-            replacement.parent = node.parent;
-            if (node.parent == null) {
-                root = replacement;//删除的节点度为1
-            } else if (node == node.parent.left) {//node是左节点
-                node.parent.left = replacement;
-            } else { // node == node.parent.right
-                node.parent.right = replacement;
-            }
-        } else if (node.parent == null) {
-            // 删除的是根节点
-            root = null;
-        } else {
-            // node是叶子节点
-            if (node == node.parent.left) {
-                node.parent.left = null;
-            } else { // node == node.parent.right
-                node.parent.right = null;
-            }
-        }
-    }
-
-    /**
-     * 查看是否包含某个元素
-     *
-     * @param element
-     * @return
-     */
-    public boolean contains(E element) {
-        return node(element) != null;
-    }
-
-    private static class Node<E> {
-        E element;
-
-        Node<E> right;
-        Node<E> left;
-        Node<E> parent;
-
-
-        public Node(Node<E> parent, E element) {
-            this.parent = parent;
+    protected static class Node<E> {
+        public E element;
+        public Node<E> left;
+        public Node<E> right;
+        public Node<E> parent;
+        public Node(E element, Node<E> parent) {
             this.element = element;
+            this.parent = parent;
         }
 
-
-        /**
-         * 判定节点是否为叶子节点
-         *
-         * @return
-         */
         public boolean isLeaf() {
             return left == null && right == null;
         }
 
-        public boolean hasTwoChilden() {
+        public boolean hasTwoChildren() {
             return left != null && right != null;
         }
     }
+
 
     private void elementNotNullCheck(E element) {
         if (element == null) {
@@ -171,29 +57,6 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         }
     }
 
-    /**
-     * @return 返回值等于0，代表e1和e2相等；返回值大于0，代表e1大于e2；返回值小于于0，代表e1小于e2
-     */
-    private int compare(E e1, E e2) {
-        if (comparator != null) {
-            return comparator.compare(e1, e2);
-        }
-        return ((Comparable<E>) e1).compareTo(e2);
-    }
-
-    private Node<E> node(E element) {
-        Node<E> node = root;
-        while (node != null) {
-            int cmp = compare(element, node.element);
-            if (cmp == 0) return node;
-            if (cmp > 0) {
-                node = node.right;
-            } else { // cmp < 0
-                node = node.left;
-            }
-        }
-        return null;
-    }
 
     @Override
     public String toString() {
@@ -422,7 +285,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         Node<E> p = node.right;
         if (p != null) {
             // 通过查找node的left的right----right进行查找，直到获取到node.right==null时
-            while (node.left != null) {
+            while (p.left != null) {
                 p = p.left;
             }
             return p;

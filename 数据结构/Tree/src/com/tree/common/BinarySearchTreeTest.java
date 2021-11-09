@@ -1,4 +1,4 @@
-package com.tree;
+package com.tree.common;
 
 
 import com.printer.BinaryTrees;
