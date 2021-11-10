@@ -41,6 +41,14 @@ public class BinaryTree<E> implements BinaryTreeInfo {
             this.parent = parent;
         }
 
+        public boolean isLeftChild() {
+            return parent != null && this == parent.left;
+        }
+
+        public boolean isRightChild() {
+            return parent != null && this == parent.right;
+        }
+
         public boolean isLeaf() {
             return left == null && right == null;
         }
@@ -57,6 +65,9 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         }
     }
 
+    protected Node<E> createNode(E element, Node<E> parent) {
+        return new Node<>(element, parent);
+    }
 
     @Override
     public String toString() {

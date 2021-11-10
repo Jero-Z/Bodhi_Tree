@@ -1,7 +1,6 @@
-package com.tree.searchTree;
+package com.tree.bst;
 
 import com.printer.BinaryTrees;
-import com.tree.common.BinaryTree;
 import org.junit.jupiter.api.Test;
 
 class BSTTest {
