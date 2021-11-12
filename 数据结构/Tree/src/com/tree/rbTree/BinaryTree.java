@@ -1,4 +1,4 @@
-package com.tree.common;
+package com.tree.rbTree;
 
 import com.printer.BinaryTreeInfo;
 
@@ -56,6 +56,17 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         public boolean hasTwoChildren() {
             return left != null && right != null;
         }
+        public Node<E> sibling() {
+            if (isLeftChild()) {
+                return parent.right;
+            }
+
+            if (isRightChild()) {
+                return parent.left;
+            }
+
+            return null;
+        }
     }
 
 
@@ -69,20 +80,6 @@ public class BinaryTree<E> implements BinaryTreeInfo {
         return new Node<>(element, parent);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        toString(root, sb, "");
-        return sb.toString();
-    }
-
-    private void toString(Node<E> node, StringBuilder sb, String prefix) {
-        if (node == null) return;
-
-        toString(node.left, sb, prefix + "L---");
-        sb.append(prefix).append(node.element).append("\n");
-        toString(node.right, sb, prefix + "R---");
-    }
 
     @Override
     public Object root() {
@@ -102,12 +99,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
 
     @Override
     public Object string(Object node) {
-        Node<E> myNode = (Node<E>) node;
-        String parentString = "null";
-        if (myNode.parent != null) {
-            parentString = myNode.parent.element.toString();
-        }
-        return myNode.element + "_p(" + parentString + ")";
+        return node;
     }
     /**
      * 遍历二叉树
