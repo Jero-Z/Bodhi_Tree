@@ -156,7 +156,7 @@ public class BinaryTree<E> implements BinaryTreeInfo {
     /**
      * 层次遍历
      */
-    public void levelOrerTraversal() {
+    public void levelOrderTraversal() {
         if (root == null) return;
 
 
